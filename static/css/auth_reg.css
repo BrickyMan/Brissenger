@@ -24,6 +24,10 @@ input[type='submit'] {
 	cursor: pointer;
 }
 
+.input-check_failed {
+	background-color: var(--err-clr);
+}
+
 #authIsVerified {
 	color: var(--err-clr);
 	margin-bottom: 10px;

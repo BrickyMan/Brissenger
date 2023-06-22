@@ -13,9 +13,10 @@
 </head>
 <body>
 	<h1>Authorize</h1>
-	<form method="POST" onsubmit="verifyData(event, 'auth_run', 'authIsVerified')">
-		<input name="login" type="text" placeholder="Login" onchange="hideElem('authIsVerified');"/>
-		<input name="password" type="password" placeholder="Password" onchange="hideElem('authIsVerified');"/>
+	<!-- onsubmit="verifyData(event, 'auth_run', 'authIsVerified')" -->
+	<form method="POST" action="/auth_run">
+		<input required name="login" type="text" placeholder="Login" onchange="hideElem('authIsVerified');"/>
+		<input required name="password" type="password" placeholder="Password" onchange="hideElem('authIsVerified');"/>
 		<p id="authIsVerified" class="hideElement"></p>
 		<input name="sumbit" type="submit" value="Sign in" />
 		<p>Don't have an account yet?</p>

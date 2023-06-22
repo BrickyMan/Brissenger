@@ -19,13 +19,12 @@ def check_session():
 # Запуск авторизации
 @app.route('/auth_run', methods=['POST', 'GET'])
 def auth_run():
-	print('test1')
-	auth_data = request.get_json()
-	print('test1.5')
+	# auth_data = request.get_json()
 	# input_login = auth_data.get('login')
 	# input_password = auth_data.get('password')
-	print('test2')
-	return 'Wrong login or password'
+	input_login = request.form['login']
+	input_password = request.form['password']
+	# return 'Wrong login or password'
 	print('data:', input_login, input_password)
 	print('result:',db_service.check_auth(input_login, input_password))
 	# Проерка логина и пароля
@@ -40,14 +39,20 @@ def auth_run():
 def reg_run():
 	input_name = request.form['name']
 	input_login = request.form['login']
-	input_password1 = request.form['password1']
-	input_password2 = request.form['password2']
-	if input_name and input_login and input_password1 and (input_password1 == input_password2):
-		if db_service.register_user(input_login, input_password1, input_name):
+	input_password = request.form['password']
+	input_password_repeat = request.form['password-repeat']
+	if input_name and input_login and input_password and (input_password == input_password_repeat):
+		if db_service.register_user(input_login, input_password, input_name):
 			return redirect('auth')
 	return redirect('reg')
 
-@app.route('/reg_verify')
+# Проверка логина при регистрации
+@app.route('/reg_login_check', methods = ['POST'])
+def reg_login_check():
+	data = request.get_json()
+	if db_service.check_item('login', data['value']):
+		return 'OK'
+	return 'Failed'
 
 # Вход в аккаунт
 @app.route('/common_chat')
