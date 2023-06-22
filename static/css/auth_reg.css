@@ -1,0 +1,30 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+input {
+	padding: 5px 10px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	background-color: #ff9900;
+	border: none;
+	color: var(--bg-clr);
+}
+
+input[type='submit'] {
+	cursor: pointer;
+}
+
+#authIsVerified {
+	color: var(--err-clr);
+	margin-bottom: 10px;
+}

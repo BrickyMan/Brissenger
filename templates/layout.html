@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+	{% if styles %}
+		{% for css_file in styles %}
+			<link rel="stylesheet" href="{{ url_for('static', filename = 'css/' + css_file + '.css') }}">
+		{% endfor %}
+	{% endif %}
+	<link rel="stylesheet" href="../static/css/chat.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<a href="/" class="header-logo">dbsq://DEBINGER.spot</a>
+		<button id="userMenuBtn">{{ name }} <span id="userMenuBtnArrow">►</span></button>
+		<div id="userMenu" class="hide-element">
+			<a href="id{{ id }}">My page</a>
+			<a href="">Friends</a>
+			<a href="">Chats</a>
+			<a href="/settings">Settings</a>
+			<form action="/sign_out" method="post">
+				<input type="submit" value="Exit">
+			</form>
+		</div>
+	</header>
+	<main>
+		<div class="content-wrapper">
+			{% block content %}
+			{% endblock content %}
+		</div>
+	</main>
+	{% if scripts %}
+		{% for js_file in scripts %}
+			<script src="{{ url_for('static', filename = 'js/' + js_file + '.js') }}"></script>
+		{% endfor %}
+	{% endif %}
+</body>
+
+
+</html>

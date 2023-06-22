@@ -1,0 +1,94 @@
+:root {
+	--bg-clr: #131313;
+	--ctx-clr: #ff9900;
+	--err-clr: #ff3700;
+}
+
+* {
+	font-family: 'Ubuntu Mono', monospace;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: var(--ctx-clr);
+	outline: none;
+}
+
+.hide-element {
+	display: none;
+}
+
+body {
+	height: 100vh;
+	background-color: var(--bg-clr);
+}
+
+header {
+	height: 50px;
+	border-bottom: 1px solid var(--ctx-clr);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+}
+
+.header-logo {
+	font-size: 20px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+#userMenuBtn {
+	background-color: transparent;
+	border: none;
+	text-decoration: underline;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#userMenu {
+	width: 120px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	background-color: var(--bg-clr);
+	border: 1px solid var(--ctx-clr);
+	padding: 10px;
+	position: absolute;
+	right: 10px;
+	top: 60px;
+}
+
+#userMenu input[type="submit"] {
+	width: 100%;
+	border: 1px solid var(--ctx-clr);
+	background-color: var(--ctx-clr);
+	color: var(--bg-clr);
+	cursor: pointer;
+}
+
+#userMenu input[type="submit"]:hover {
+	background-color: var(--bg-clr);
+	color: var(--ctx-clr);
+	cursor: pointer;
+}
+
+.content-wrapper {
+	width: 100%;
+	max-width: 600px;
+	height: 100%;
+	border: 1px solid var(--ctx-clr);
+	padding: 10px;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 450px) {
+	main {
+		padding: 0;
+	}
+	.content-wrapper {
+		border: none;
+	}
+}

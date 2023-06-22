@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="user-settings">
+	<p>Current name: {{ userdata['name'] }}</p>
+	<form action="/change_user_name" method="POST">
+		<input type="text" name="newUsername" placeholder="New name"></input=>
+		<input type="submit" value="Change">
+	</form>
+	<p>Current login: {{ userdata['login'] }}</p>
+	<form action="/change_user_login" method="POST">
+		<input type="text" name="newLogin" placeholder="New login"></input=>
+		<input type="submit" value="Change">
+	</form>
+	<p>Change password:</p>
+	<form action="/change_user_passwprd" method="POST">
+		<div class="change-password-group">
+			<input type="text" name="oldPassword" placeholder="Old password"></input=>
+			<input type="text" name="newPassword1" placeholder="New password"></input=>
+			<input type="text" name="newPassword2" placeholder="Repeat new password"></input=>
+		</div>
+		<input type="submit" value="Change">
+	</form>
+</div>
+{% endblock content %}
