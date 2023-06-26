@@ -17,6 +17,10 @@
 	display: none !important;
 }
 
+.error-msg {
+	color: var(--err-clr);
+}
+
 body {
 	height: 100vh;
 	background-color: var(--bg-clr);

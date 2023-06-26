@@ -1,9 +1,10 @@
-// import {hideElem, showElem} from 'util.js';
+// import {hideElem, showElem} from 'util';
 
 function checkInput(event) {
 	postRequest(`reg_${event.target.name}_check`, {'value': event.target.value})
+		// Обработка успешного ответа
 		.then(function(response) {
-			console.log(response); // Обработка успешного ответа
+			console.log(response); 
 			if (response == 'Failed') {
 				event.target.classList.add('input-check_failed');
 			}
@@ -11,8 +12,9 @@ function checkInput(event) {
 				event.target.classList.remove('input-check_failed');
 			}
 		})
+		// Обработка ошибки
 		.catch(function(error) {
-			console.error(error); // Обработка ошибки
+			console.error(error); 
 		});
 }
 
@@ -32,7 +34,8 @@ function postRequest(url, data) {
 					// Если запрос успешен, вызываем функцию resolve с ответом сервера
 					let res = xhr.responseText;
 					resolve(res);
-				} else {
+				}
+				else {
 					// Если произошла ошибка, вызываем функцию reject с кодом ошибки
 					reject(xhr.status);
 				}
@@ -46,6 +49,15 @@ function postRequest(url, data) {
 
 function checkPassword(event) {
 	if (event.target.value.match(/^(?=.*\d).{4,16}$/)) {
+		event.target.classList.remove('input-check_failed');
+	}
+	else {
+		event.target.classList.add('input-check_failed');
+	}
+}
+
+function checkPasswordRepeat(event) {
+	if (event.target.value == document.querySelector('input[name="password"]').value) {
 		event.target.classList.remove('input-check_failed');
 	}
 	else {

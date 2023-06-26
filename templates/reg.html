@@ -14,10 +14,13 @@
 <body>
 	<h1>Registration</h1>
 	<form method="POST" action="/reg_run" autocomplete="off">
+		{% if error %}
+			<p class="error-msg">Something goes wrong!</p>
+		{% endif %}
 		<input required name="name" type="text" placeholder="Name" />
 		<input required onkeyup="checkInput(event)" name="login" type="text" placeholder="Login" />
 		<input required onkeyup="checkPassword(event)" autocomplete="new-password" name="password" type="password" placeholder="Password" />
-		<input required name="password-repeat" type="password" placeholder="Repeat password" />
+		<input required onkeyup="checkPasswordRepeat(event)" name="password-repeat" type="password" placeholder="Repeat password" />
 		<input name="sumbit" type="submit" value="Sign up" />
 		<p>Already has an account?</p>
 		<a href="/auth">Authorize</a>
