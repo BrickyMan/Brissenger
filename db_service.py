@@ -84,11 +84,25 @@ def get_all_messages():
 	cursor = conn.cursor()
 	cursor.execute('SELECT * FROM messages')
 	data = cursor.fetchall()
+	# Получение названий столбцов
 	columns = [description[0] for description in cursor.description]
+	# Список всех сообщений
 	result = []
 	for row in data:
+		# Добавление в список словаря с данными сообщения
 		result.append(dict(zip(columns, row)))
 		# Добавление в данные сообщения информацию об имени отправителя считанную по его id
 		result[-1]['userName'] = get_userdata_item(row[1], 'name')
+	conn.close()
+	return result
+
+def get_last_message():
+	conn = sqlite3.connect('common_chat.db', check_same_thread = False)
+	cursor = conn.cursor()
+	cursor.execute('SELECT * FROM messages WHERE msgID = (SELECT max(msgId) FROM messages)')
+	columns = [description[0] for description in cursor.description]
+	msg_data = cursor.fetchone()
+	result = dict(zip(columns, msg_data))
+	result['userName'] = get_userdata_item(msg_data[1], 'name')
 	conn.close()
 	return result

@@ -117,9 +117,8 @@ def sign_out():
 # Отправка сообщения по веб-сокету
 @socketio.on('message')
 def handle_message(message):
-	# print('Received message:', message)
 	db_service.send_message(message, session['authed_id'])
-	emit('response', 'Server received your message: ' + message, broadcast=True)
+	emit('response', db_service.get_last_message(), broadcast=True)
 
 # Отправка сообщения
 @app.route('/send_msg', methods=['POST'])

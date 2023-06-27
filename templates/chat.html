@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="chat-msgs-area">
-	<ul>
+	<ul id="chatMsgsList">
 		{% for msg in msgs_list %}
 		<li msg-id="{{ msg["msgId"] }}">
 			<div class="msg-header">
@@ -16,27 +16,9 @@
 	<p class="chat-msgs-area_begining-text">This is where all this begins...</p>
 </div>
 <!-- action="/send_msg" method="POST" -->
-<form id="msgSentForm"  class="msg-send-form" onsubmit="sendMessage(event);">
+<form id="msgSentForm" class="msg-send-form" onsubmit="sendMessage(event);">
 	<textarea id="msgTextarea" name="new-msg-text" placeholder="Type message..."></textarea>
 	<input type="submit" value="Send">
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
-<script type="text/javascript">
-    let socket = io.connect('http://' + document.domain + ':' + location.port);
-
-    socket.on('connect', function() {
-        console.log('Connected to the server!');
-    });
-
-    socket.on('response', function(response) {
-        console.log('Server response:', response);
-		
-    });
-
-    function sendMessage(event) {
-		event.preventDefault();
-        let message = document.querySelector('#msgTextarea').value;
-        socket.emit('message', message);	
-    }
-</script>
 {% endblock content %}
