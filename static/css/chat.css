@@ -49,7 +49,7 @@ main {
 
 /* Chat input */
 .msg-send-form {
-	height: 30px;
+	height: 40px;
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
@@ -59,7 +59,7 @@ main {
 	width: 100%;
 	background-color: transparent;
 	border: 1px solid var(--ctx-clr);
-	padding: 5px;
+	padding: 9px;
 	resize: none;
 }
 

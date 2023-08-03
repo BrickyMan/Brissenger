@@ -95,4 +95,10 @@ header {
 	.content-wrapper {
 		border: none;
 	}
+	#userMenu {
+		gap: 15px;
+	}
+	#userMenu input[type="submit"] {
+		padding: 5px 0;
+	}
 }

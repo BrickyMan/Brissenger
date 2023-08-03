@@ -33,7 +33,7 @@ def check_item(item, value):
 		return True
 	return False
 
-print(check_item('login', 'a'))
+# print(check_item('login', 'a'))
 	
 def get_id(login):
 	conn = sqlite3.connect('users.db', check_same_thread = False)
